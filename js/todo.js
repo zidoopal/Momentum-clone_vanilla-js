@@ -4,8 +4,9 @@ const toDoList = document.querySelector('.todo-list');
 
 function deleteToDo(event) {
   // target == 클릭된 HTML element
-  // parentElement == 클릭된 element의 부모
+  // parentElement == 클릭된 element의 부모 (여기서 button의 부모는 li)
   const li = event.target.parentElement;
+  // li 삭제
   li.remove();
 }
 
