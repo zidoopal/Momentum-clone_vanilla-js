@@ -1,0 +1,26 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
+body,
+input {
+  box-sizing: border-box;
+
+  font-family: 'Bagel Fat One', cursive;
+  letter-spacing: 3px;
+}
+
+.hidden {
+  display: none;
+}
+
+.bg {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  opacity: 80%;
+  z-index: -1;
+}
