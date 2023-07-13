@@ -2,13 +2,24 @@ const toDoForm = document.querySelector('.todo-form');
 const toDoInput = document.querySelector('.todo-form input');
 const toDoList = document.querySelector('.todo-list');
 
+const TODOS_KEYS = 'todos';
+
 // ✨ 원하는 것 : paintToDo(newToDo); 가 될때 마다 그 텍스트를 array에 push 하고 싶다~
 const toDos = []; // todo를 담을 배열 생성
 
 // ToDo 목록을 local Storage에 저장
 function saveToDos() {
-  localStorage.setItem('todos', toDos);
+  // localStorage.setItem(TODOS_KEYS, toDos);
+  // just, 텍스트 형태로 value가 저장되는 상태 (→array 형태로 저장하고 싶대)
+
+  //  JSON.stringify() : JavaScript 값이나 객체를 JSON 문자열로 변환
+  localStorage.setItem(TODOS_KEYS, JSON.stringify(toDos));
+  // 아직도 새로고침하면 localStorage에는 남아있지만 화면에서는 날라감..
 }
+
+// 📌  local storage에 array로 저장이 안되기 때문에
+// JSON.stringify로 array처럼 생긴 string으로 저장한 후
+// 다시 JSON.parse 이용해 array로 꺼내는 방법
 
 // todo삭제_생성되는 todo중 어떤 todo를 삭제하는 건지에 대한 정보가 필요함
 // 생성된 모든 todo의 button이 같은 event와 함수를 실행_정보가 필요
@@ -58,3 +69,20 @@ function handleToDoSubmit(event) {
   // 저장은 되지만 새로고침하면 화면에서는 사라짐
 }
 toDoForm.addEventListener('submit', handleToDoSubmit);
+
+// function sayHello(item) {
+//   console.log('Hello', item);
+// }
+
+const savedToDos = localStorage.getItem(TODOS_KEYS);
+
+if (saveToDos !== null) {
+  const parsedToDos = JSON.parse(savedToDos);
+  console.log(parsedToDos);
+  parsedToDos.forEach((item) => console.log('Hello', item));
+  // parsedToDos 에 있는 각각의 item에 대해서 console.log 할거시다~ 여기 각각의 item을~
+
+  // == // function sayHello(item) {
+  //   console.log('Hello', item);
+  // }
+}
