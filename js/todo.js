@@ -7,6 +7,10 @@ const TODOS_KEYS = 'todos';
 // ✨ 원하는 것 : paintToDo(newToDo); 가 될때 마다 그 텍스트를 array에 push 하고 싶다~
 const toDos = []; // todo를 담을 배열 생성
 
+// application이 시작 될 때, toDos arr는 항상 비어있어서 +
+// (js:62) toDos.push(newToDo); 빈 arr에 그냥 push하게 되어서
+// 이러한 이유로 새로 저장할 때 마다 이전 저장한 것은 사라지고 새로 추가한것만 덮어씌워져서 저장되고있음
+
 // ToDo 목록을 local Storage에 저장
 function saveToDos() {
   // localStorage.setItem(TODOS_KEYS, toDos);
@@ -79,10 +83,14 @@ const savedToDos = localStorage.getItem(TODOS_KEYS);
 if (saveToDos !== null) {
   const parsedToDos = JSON.parse(savedToDos);
   console.log(parsedToDos);
-  parsedToDos.forEach((item) => console.log('Hello', item));
-  // parsedToDos 에 있는 각각의 item에 대해서 console.log 할거시다~ 여기 각각의 item을~
+  parsedToDos.forEach(paintToDo);
+  // array.foreach는 받아온 array를 for 반복문 없이 item 하나씩 function에 넣을 수 있는 신기한 뇨슥
+  // parsedToDos 내부의 item들을 가지고, 그 item들을 나타내고 싶은 것()
+  // painToDo fucntion을 넣어주면 됨! (painToDo는 newToDo를 인자로 전달받고 있음)
 
-  // == // function sayHello(item) {
+  // (item) => console.log('Hello', item)
+  // ==
+  // function sayHello(item) {
   //   console.log('Hello', item);
   // }
 }
