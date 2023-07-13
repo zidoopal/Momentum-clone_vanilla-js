@@ -8,7 +8,8 @@ const TODOS_KEYS = 'todos';
 const toDos = []; // todo를 담을 배열 생성
 
 // application이 시작 될 때, toDos arr는 항상 비어있어서 +
-// (js:62) toDos.push(newToDo); 빈 arr에 그냥 push하게 되어서
+// (js:62) toDos.push(newToDo); 작성하고 form을 submit 할 때 마다 > 빈 arr에 그냥 push하게 되어서
+// function saveToDos(); 실행할 때 새로운 toDo들만 포함하고있는 array를 저장하고 있음.
 // 이러한 이유로 새로 저장할 때 마다 이전 저장한 것은 사라지고 새로 추가한것만 덮어씌워져서 저장되고있음
 
 // ToDo 목록을 local Storage에 저장
