@@ -8,7 +8,6 @@ const toDos = []; // todo를 담을 배열 생성
 // ToDo 목록을 local Storage에 저장
 function saveToDos() {
   localStorage.setItem('todos', toDos);
-  // toDos.push(newToDo).split(' ') = localStorage.setItem('todos', toDos)
 }
 
 // todo삭제_생성되는 todo중 어떤 todo를 삭제하는 건지에 대한 정보가 필요함
@@ -16,7 +15,7 @@ function saveToDos() {
 function deleteToDo(event) {
   // target == 클릭된 HTML element
   // parentElement == 클릭된 element의 부모 (여기서 button의 부모는 li)
-  // console.log(event.target.parentElement);  / 고유한 속성으로의 접근하는 방법을 찾는 것
+  // console.log(event.target.parentElement); // 고유한 속성으로의 접근하는 방법을 찾는 것
   // event에 많은 정보를 알 수 있고 그 정보들로 각 생성된 버튼의 고유한 값을 찾아내서
   // 그 값이 어떤 버튼을 특정하는지 알아야 그 버튼만을 지워줄 수 있는것이다.
   const li = event.target.parentElement;
@@ -36,7 +35,6 @@ function paintToDo(newToDo) {
   li.appendChild(span);
   li.appendChild(btn);
   toDoList.appendChild(li);
-  deleteToDo(newToDo);
 }
 
 // todo를 입력하면 제출되는 역할
